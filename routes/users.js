@@ -19,7 +19,7 @@ router.get('/', async function(req, res, next) {
     const urlResult = await axios.get(transUrl,{
       headers: {
         'User-Agent': req.headers['user-agent'],
-        'Content-Language': 'en-US',
+        'Content-Language': req.headers['Content-Language'] || req.headers['content-language'] || 'en-US',
         'host': 'www.instagram.com'
       }
     });
